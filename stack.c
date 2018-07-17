@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/16 19:46:02 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/17 12:52:11 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_stack	*ft_stnew(int n)
 {
-	t_stack new;
+	t_stack *new;
 
-	new = (t_stack)malloc(sizeof(t_stack));
+	new = (t_stack*)malloc(sizeof(t_stack));
 	new->n = n;
 	new->next = new;
 	new->prev = new;
@@ -25,9 +25,7 @@ t_stack	*ft_stnew(int n)
 
 void	ft_stpush(t_stack **stack, t_stack *in, t_stack *bottom)
 {
-	in->pre = stack;
+	in->prev = *stack;
 	in->next = bottom;
 	(*stack)->next = in;
 }
-
-
