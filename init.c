@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/17 14:57:25 by zbatik           ###   ########.fr       */
+/*   Created: 2018/07/17 15:03:39 by zbatik            #+#    #+#             */
+/*   Updated: 2018/07/17 16:26:53 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_stnew(int n)
+t_ps	*init_ps(int count, char **input)
 {
-	t_stack *new;
+	int	i;
+	t_ps	ps;
+	t_stack tmp;
 
-	new = (t_stack*)malloc(sizeof(t_stack));
-	new->n = n;
-	new->next = new;
-	new->prev = new;
-	return (new);
-}
+	ps = (t_ps*)malloc(sizeof(t_ps));
+	
+	ps->a = ft_stnew(ft_atoi(input[i]));
+	ps->bottom.a = t_ps->a;
+	ps->length.a = count;
 
-void	ft_stpush(t_stack **head, t_stack *in, t_stack *bottom)
-{
-	in->prev = *head;
-	in->next = bottom;
-	bottom->prev = in;
-	*head = in;
+	ps->b = NULL;
+	ps->bottom.b = NULL;
+	pos->length.b = 0;
+	i = 1;
+	while (i < count)
+	{
+		tmp = ft_stnew(ft_atoi(input[i]));
+		ft_stadd(&ps->a, tmp, ps->bottom.a);
+	}
+	return(ps
 }
