@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/17 12:47:00 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/17 17:34:46 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ typedef struct		s_stack
 	struct s_stack	*prev;
 }			t_stack;
 
-typedef struct		s_placeholder
+typedef struct		s_pair
 {
-	t_stack	a;
-	t_stack b;
-}			t_placeholder;
+	t_stack	*a;
+	t_stack *b;
+}			t_pair;
 
 typedef struct		s_len
 {
@@ -38,13 +38,13 @@ typedef struct		s_len
 
 typedef struct		s_ps
 {
-	t_stack		a;
-	t_stack		b;
-	t_placeholder	top;
-	t_placeholder	bottom;
-	t_len		length;
+	t_pair	stack;
+	t_pair	top;
+	t_pair	bottom;
+	t_len	length;
 }			t_ps;
 
+t_ps	*init_ps(int count, char **input);
 void	post_error(void);
 void	print_stack(t_stack *stack, int len);
 void	ft_stpush(t_stack **stack, t_stack *in, t_stack *bottom);

@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 15:03:39 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/17 16:26:53 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/17 17:41:04 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 t_ps	*init_ps(int count, char **input)
 {
 	int	i;
-	t_ps	ps;
-	t_stack tmp;
-
+	t_ps	*ps;
+	t_stack *tmp;
+	
+	i = 0;
 	ps = (t_ps*)malloc(sizeof(t_ps));
 	
-	ps->a = ft_stnew(ft_atoi(input[i]));
-	ps->bottom.a = t_ps->a;
+	ps->stack.a = ft_stnew(ft_atoi(input[i++]));
+	ps->bottom.a = ps->stack.a;
 	ps->length.a = count;
 
-	ps->b = NULL;
+	ps->stack.b = NULL;
 	ps->bottom.b = NULL;
-	pos->length.b = 0;
-	i = 1;
+	ps->length.b = 0;
 	while (i < count)
 	{
-		tmp = ft_stnew(ft_atoi(input[i]));
-		ft_stadd(&ps->a, tmp, ps->bottom.a);
+		tmp = ft_stnew(ft_atoi(input[i++]));
+		ft_stpush(&ps->stack.a, tmp, ps->bottom.a);
 	}
-	return(ps
+	return(ps);
 }
