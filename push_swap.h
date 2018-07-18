@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/17 17:34:46 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/18 21:30:03 by zack             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,20 @@ typedef struct		s_ps
 t_ps	*init_ps(int count, char **input);
 void	post_error(void);
 void	print_stack(t_stack *stack, int len);
+void	print_stacks(t_ps *ps);
 void	ft_stpush(t_stack **stack, t_stack *in, t_stack *bottom);
+
+void	apply_ops(t_ps *ps, char *op);
+/*
+void	sa(t_ps *ps);
+void	sb(t_ps *ps);
+void	pa(t_ps *ps);
+void	pb(t_ps *ps);
+void	ra(t_ps *ps);
+void	rb(t_ps *ps);
+void	rra(t_ps *ps);
+void	rrb(t_ps *ps);
+*/
 t_stack	*ft_stnew(int n);
 
 #endif
