@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/17 14:16:42 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/18 20:30:19 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,11 @@ void	post_error(void)
 {
 	write(2, "Error\n", 6);
 }
+
+/*
+void	print_stacks(t_ps ps);
+{
+	int i;
+	
+	i = 0;
+	while (i < ft_max(ps->len.a, ps->len.b))*/
