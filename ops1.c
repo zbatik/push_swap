@@ -6,7 +6,7 @@
 /*   By: zack <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 21:10:15 by zack              #+#    #+#             */
-/*   Updated: 2018/07/18 21:29:02 by zack             ###   ########.fr       */
+/*   Updated: 2018/07/18 21:33:09 by zack             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ void	apply_op(t_ps *ps, char *op)
 		rrotate(ps->stack.a);
 		rrotate(ps->stack.b);
 	}
-}
+	else
+	{
+		perror("Invaild Operation");
+		exit();
+	}
 }
 
 void	swap(t_stack *stack)
