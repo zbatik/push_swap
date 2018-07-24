@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/18 21:30:03 by zack             ###   ########.fr       */
+/*   Updated: 2018/07/24 17:01:55 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	print_stacks(t_ps *ps);
 void	ft_stpush(t_stack **stack, t_stack *in, t_stack *bottom);
 
 void	apply_ops(t_ps *ps, char *op);
+void	swap(t_stack *stack, t_stack *bottom, int len);
+void	rotate(t_stack **stack, t_stack **bottom);
+void	rrotate(t_stack **stack, t_stack **bottom);
 /*
 void	sa(t_ps *ps);
 void	sb(t_ps *ps);

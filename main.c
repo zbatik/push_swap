@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:00:46 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/18 20:53:43 by zack             ###   ########.fr       */
+/*   Updated: 2018/07/24 17:48:53 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int c, char **v)
 	if (c < 2)
 		return (0);
 	ps = init_ps(c - 1, v + 1);
-	
-	print_stacks(ps);	
+
+	print_stacks(ps);
+	apply_ops(ps, "ra");
+	ft_putendl("ra");
 }
