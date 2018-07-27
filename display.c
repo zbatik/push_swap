@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/27 16:03:31 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/27 17:13:10 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	post_error(char *err_msg)
 static void	print_lables(t_ps *ps)
 {
 	ft_putchar('A');
-	ft_putchar_cl(':', 'g');
-	ft_putnbr_cl(ps->length.a, 'g');
+	ft_putchar_cl(':', g);
+	ft_putnbr_cl(ps->length.a, g);
 	ft_putstr("\t\t");
 	ft_putchar('B');
-	ft_putchar_cl(':', 'g');
-	ft_putnbr_cl(ps->length.b, 'g');
+	ft_putchar_cl(':', g);
+	ft_putnbr_cl(ps->length.b, g);
 	ft_putchar('\n');
 }
 
@@ -55,15 +55,15 @@ void	print_stacks(t_ps *ps)
 	{
 		if (a != NULL)
 		{
-			ft_putnbr_cl(a->n, 'y');
+			ft_putnbr_cl(a->n, y);
 			a = a->next;
 		}
 		else
-			ft_putchar('\t');
+			//ft_putchar('\t');
 		ft_putstr("\t\t");
 		if (b != NULL)
 		{	
-			ft_putnbr_cl(b->n, 'c');
+			ft_putnbr_cl(b->n, c);
 			b = b->next;
 		}
 		ft_putchar('\n');

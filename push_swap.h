@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/27 16:03:15 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/27 17:08:51 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum
 	rra,
 	rrb,
 	rrr,
+	error,
 }	t_op;
 
 typedef struct	s_stack
@@ -73,6 +74,7 @@ void			push(t_stack **from, t_stack **to, int *len_from, int *len_to);
 
 void			rotate(t_stack **stack, int len);
 void			rrotate(t_stack **stack, int len);
+t_op	convert_op(char *op);
 
 t_stack			*ft_stnew(int n);
 
