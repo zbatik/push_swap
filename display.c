@@ -6,54 +6,66 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/18 20:57:23 by zack             ###   ########.fr       */
+/*   Updated: 2018/07/27 16:03:31 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack, int len)
+void	print_stack(t_stack *stack)
 {
 	int i;
 
 	i = -1;
-	while (++i < len)
+	while (stack)
 	{
 		ft_putnbr(stack->n);
-		stack = stack->prev;
 		ft_putchar('\n');
+		stack = stack->next;
 	}
 }
 
-void	post_error(void)
+void	post_error(char *err_msg)
 {
-	write(2, "Error\n", 6);
+	while (*err_msg)
+		write(2, err_msg++, 1);
 }
 
+static void	print_lables(t_ps *ps)
+{
+	ft_putchar('A');
+	ft_putchar_cl(':', 'g');
+	ft_putnbr_cl(ps->length.a, 'g');
+	ft_putstr("\t\t");
+	ft_putchar('B');
+	ft_putchar_cl(':', 'g');
+	ft_putnbr_cl(ps->length.b, 'g');
+	ft_putchar('\n');
+}
 
 void	print_stacks(t_ps *ps)
 {
-	int i;
+	t_stack	*a;
+	t_stack	*b;
 
-	ft_putendl("A\t\tB\n");
-	i = -1;
-	while (++i < ft_max(ps->length.a, ps->length.b))
+	a = ps->stack.a;
+	b = ps->stack.b;
+	print_lables(ps);
+	while (a != NULL || b != NULL)
 	{
-		if (i < ps->length.a)
+		if (a != NULL)
 		{
-			ft_putnbr(ps->stack.a->n);
-			ps->stack.a = ps->stack.a->prev;
+			ft_putnbr_cl(a->n, 'y');
+			a = a->next;
 		}
 		else
 			ft_putchar('\t');
 		ft_putstr("\t\t");
-		if (i < ps->length.b)
+		if (b != NULL)
 		{	
-			ft_putnbr(ps->stack.b->n);
-			ps->stack.a = ps->stack.a->prev;
+			ft_putnbr_cl(b->n, 'c');
+			b = b->next;
 		}
 		ft_putchar('\n');
 	}
 }
-
-		

@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/24 17:01:55 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/27 16:03:15 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,66 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include "libft/includes/libft.h"
 
-typedef struct		s_stack
+typedef enum
 {
-	int		n;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}			t_stack;
+	sa,
+	sb,
+	ss,
+	pa,
+	pb,
+	ra,
+	rb,
+	rr,
+	rra,
+	rrb,
+	rrr,
+}	t_op;
 
-typedef struct		s_pair
+typedef struct	s_stack
+{
+	int				n;
+	struct s_stack	*next;
+}				t_stack;
+
+typedef struct	s_pair
 {
 	t_stack	*a;
 	t_stack *b;
-}			t_pair;
+}				t_pair;
 
-typedef struct		s_len
+typedef struct	s_len
 {
 	int a;
 	int b;
-}			t_len;
+}				t_len;
 
-typedef struct		s_ps
+typedef struct	s_ps
 {
 	t_pair	stack;
-	t_pair	top;
-	t_pair	bottom;
+	int		max;
+	int		min;
 	t_len	length;
-}			t_ps;
+}				t_ps;
 
-t_ps	*init_ps(int count, char **input);
-void	post_error(void);
-void	print_stack(t_stack *stack, int len);
-void	print_stacks(t_ps *ps);
-void	ft_stpush(t_stack **stack, t_stack *in, t_stack *bottom);
+t_ps			*init_ps(int count, char **input);
 
-void	apply_ops(t_ps *ps, char *op);
-void	swap(t_stack *stack, t_stack *bottom, int len);
-void	rotate(t_stack **stack, t_stack **bottom);
-void	rrotate(t_stack **stack, t_stack **bottom);
-/*
-void	sa(t_ps *ps);
-void	sb(t_ps *ps);
-void	pa(t_ps *ps);
-void	pb(t_ps *ps);
-void	ra(t_ps *ps);
-void	rb(t_ps *ps);
-void	rra(t_ps *ps);
-void	rrb(t_ps *ps);
-*/
-t_stack	*ft_stnew(int n);
+void			post_error(char *err_msg);
+void			print_stack(t_stack *stack);
+void			print_stacks(t_ps *ps);
+
+void			ft_stpush(t_stack **stack, t_stack *item);
+
+void			apply_op(t_ps *ps, t_op op);
+void			swap(t_stack **stack, int len);
+void			push(t_stack **from, t_stack **to, int *len_from, int *len_to);
+
+void			rotate(t_stack **stack, int len);
+void			rrotate(t_stack **stack, int len);
+
+t_stack			*ft_stnew(int n);
 
 #endif
