@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/27 17:08:51 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/28 13:41:31 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ typedef enum
 	error,
 }	t_op;
 
+typedef struct s_oplist
+{
+	s_oplist	*next;
+	s_oplist	*prev;
+	t_op		op;
+}				t_oplist;
+
 typedef struct	s_stack
 {
 	int				n;
@@ -54,15 +61,16 @@ typedef struct	s_len
 
 typedef struct	s_ps
 {
-	t_pair	stack;
 	int		max;
 	int		min;
+	int		debug;
+	int		colour;
+	t_pair	stack;
 	t_len	length;
 }				t_ps;
 
 t_ps			*init_ps(int count, char **input);
 
-void			post_error(char *err_msg);
 void			print_stack(t_stack *stack);
 void			print_stacks(t_ps *ps);
 

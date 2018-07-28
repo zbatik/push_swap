@@ -6,7 +6,7 @@
 /*   By: zack <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 21:10:15 by zack              #+#    #+#             */
-/*   Updated: 2018/07/27 17:14:09 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/28 12:15:43 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	apply_op(t_ps *ps, t_op op)
 			rrotate(&ps->stack.b, ps->length.b);
 			break ;
 		case error :
-			post_error("Invaild Operation");
+			ft_puterror("Invaild Operation");
 			exit(0);
 	}
 }
