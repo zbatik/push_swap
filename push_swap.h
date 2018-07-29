@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/28 13:41:31 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/29 16:05:19 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ typedef enum
 	rrr,
 	error,
 }	t_op;
-
-typedef struct s_oplist
-{
-	s_oplist	*next;
-	s_oplist	*prev;
-	t_op		op;
-}				t_oplist;
 
 typedef struct	s_stack
 {
@@ -80,10 +73,11 @@ void			apply_op(t_ps *ps, t_op op);
 void			swap(t_stack **stack, int len);
 void			push(t_stack **from, t_stack **to, int *len_from, int *len_to);
 
+t_dblist		*store_op(char *op_str, t_op op);
 void			rotate(t_stack **stack, int len);
 void			rrotate(t_stack **stack, int len);
-t_op	convert_op(char *op);
-
+t_op			convert_op(char *op);
+int	is_assending(t_ps *ps);
 t_stack			*ft_stnew(int n);
 
 #endif

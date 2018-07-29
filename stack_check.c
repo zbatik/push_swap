@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/29 13:53:57 by zbatik           ###   ########.fr       */
+/*   Created: 2018/07/29 15:57:42 by zbatik            #+#    #+#             */
+/*   Updated: 2018/07/29 16:06:50 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_stnew(int n)
+int	is_assending(t_ps *ps)
 {
-	t_stack *new;
+	t_stack *aa;
 
-	new = (t_stack*)malloc(sizeof(t_stack));
-	new->n = n;
-	new->next = NULL;
-	return (new);
-}
-
-void	ft_stpush(t_stack **stack, t_stack *item)
-{
-	item->next = *stack;
-	*stack = item;
+	aa = ps->stack.a;
+	while (aa)
+	{
+		if (aa->n > aa->next->n)
+			return (0);
+		aa = aa->next;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: zbatik <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/17 12:48:33 by zbatik            #+#    #+#              #
-#    Updated: 2018/07/28 13:18:47 by zbatik           ###   ########.fr        #
+#    Updated: 2018/07/29 16:06:09 by zbatik           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ PS = push_swap
 CHEKER = checker
 LIB	= libft/libft.a
 FLAGS	= -Wall -Werror -Wextra
-FILES	= init.c display.c stack.c main.c ops.c
+FILES	= init.c display.c stack.c main.c ops.c read.c stack_check.c
 
 all: $(LIB)
 	gcc $(FLAGS) $(FILES) $(LIB) -o $(CHEKER)

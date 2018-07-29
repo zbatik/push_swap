@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/28 13:15:12 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/29 15:46:19 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	print_stacks(t_ps *ps)
 	t_stack	*a;
 	t_stack	*b;
 
-	ft_putendl("TEST");
 	a = ps->stack.a;
 	b = ps->stack.b;
 	print_lables(ps);

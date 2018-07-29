@@ -6,17 +6,19 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:00:46 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/28 13:59:29 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/29 17:51:30 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_oplist	get_oplist(void)
-{	
-	t_op op;
-	t_oplist oplist;
-	
+t_dblist	*get_oplist(void)
+{
+	char		*op_str;	
+	t_op		op;
+	t_dblist	*oplist;
+
+	oplist = NULL;
 	while (1)	
 	{
 		get_next_line(0, &op_str);
@@ -26,18 +28,31 @@ t_oplist	get_oplist(void)
 			break;
 		}
 		op = convert_op(op_str);
-		store_op(op);
+		ft_lstdbadd(&oplist, ft_lstdbnew(op_str, op));
 		free(op_str);
 	}
+//	while (oplist)
+//		oplist = oplist->prev;
+	return (oplist);
 }
 
 int	main(int c, char **v)
 {
 	t_ps *ps;
-	char *op_str;
+	t_dblist *oplist;
 
 	if (c < 2)
 		return (0);
 	ps = init_ps(c - 1, v + 1);
-	get_oplist();
+	oplist = get_oplist();
+	while (oplist != NULL)
+	{
+		apply_op(ps, oplist->n);
+		ft_putendl_cl(oplist->str, r);
+		print_stacks(ps);
+		oplist = oplist->prev;
+	}
+	if (is_assending(ps))
+		ft_putendl_cl("OK", g);
+	ft_putendl_cl("KO", r);
 }
