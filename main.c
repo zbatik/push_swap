@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:00:46 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/29 17:51:30 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/07/30 11:53:58 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ int	main(int c, char **v)
 	while (oplist != NULL)
 	{
 		apply_op(ps, oplist->n);
-		ft_putendl_cl(oplist->str, r);
-		print_stacks(ps);
 		oplist = oplist->prev;
 	}
 	if (is_assending(ps))
 		ft_putendl_cl("OK", g);
-	ft_putendl_cl("KO", r);
+	else
+		ft_putendl_cl("KO", r);
 }
