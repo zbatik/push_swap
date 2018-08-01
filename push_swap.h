@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/29 16:05:19 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/01 11:27:53 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include "libft/includes/libft.h"
 
 typedef enum
@@ -66,6 +67,7 @@ t_ps			*init_ps(int count, char **input);
 
 void			print_stack(t_stack *stack);
 void			print_stacks(t_ps *ps);
+void			print_results(t_ps *ps);
 
 void			ft_stpush(t_stack **stack, t_stack *item);
 
@@ -77,7 +79,7 @@ t_dblist		*store_op(char *op_str, t_op op);
 void			rotate(t_stack **stack, int len);
 void			rrotate(t_stack **stack, int len);
 t_op			convert_op(char *op);
-int	is_assending(t_ps *ps);
+int				is_assending(t_ps *ps);
 t_stack			*ft_stnew(int n);
 
 #endif

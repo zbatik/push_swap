@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/29 15:46:19 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/01 10:53:17 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,12 @@ void	print_stacks(t_ps *ps)
 		}
 		ft_putchar('\n');
 	}
+}
+
+void	print_results(t_ps *ps)
+{
+	if (is_assending(ps))
+		ft_putendl_cl("OK", g);
+	else
+		ft_putendl_cl("KO", r);
 }
