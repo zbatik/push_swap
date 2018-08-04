@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/01 10:53:17 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/04 15:39:02 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	print_stack(t_stack *stack)
 static void	print_lables(t_ps *ps)
 {
 	ft_putchar('A');
-	ft_putchar_cl(':', g);
-	ft_putnbr_cl(ps->length.a, g);
+	ft_putchar_cl(':', CL(g));
+	ft_putnbr_cl(ps->length.a, CL(g));
 	ft_putstr("\t\t");
 	ft_putchar('B');
-	ft_putchar_cl(':', g);
-	ft_putnbr_cl(ps->length.b, g);
+	ft_putchar_cl(':', CL(g));
+	ft_putnbr_cl(ps->length.b, CL(g));
 	ft_putchar('\n');
 }
 
@@ -49,23 +49,23 @@ void	print_stacks(t_ps *ps)
 	{
 		if (a != NULL)
 		{
-			ft_putnbr_cl(a->n, y);
+			ft_putnbr_cl(a->n, CL(y));
 			a = a->next;
 		}
 		ft_putstr("\t\t");
 		if (b != NULL)
 		{	
-			ft_putnbr_cl(b->n, c);
+			ft_putnbr_cl(b->n, CL(c));
 			b = b->next;
 		}
 		ft_putchar('\n');
 	}
 }
 
-void	print_results(t_ps *ps)
+void	print_result(t_ps *ps)
 {
-	if (is_assending(ps))
-		ft_putendl_cl("OK", g);
+	if (is_assending(ps) && ps->length.b == 0)
+		ft_putendl_cl("OK", CL(g));
 	else
-		ft_putendl_cl("KO", r);
+		ft_putendl_cl("KO", CL(r));
 }

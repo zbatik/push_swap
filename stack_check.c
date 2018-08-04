@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:57:42 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/01 11:29:17 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/04 15:10:22 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_assending(t_ps *ps)
 	aa = ps->stack.a;
 	while (++i < ps->length.a - 1)
 	{
-		if (aa->n > aa->next->n)
+		if (aa->n < aa->next->n)
 			return (0);
 		aa = aa->next;
 	}

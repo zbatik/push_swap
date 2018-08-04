@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 15:03:39 by zbatik            #+#    #+#             */
-/*   Updated: 2018/07/28 13:41:09 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/04 14:03:01 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ t_ps	*init_ps(int count, char **input)
 		item = ft_stnew(n);
 		ft_stpush(&ps->stack.a, item);
 	}
-	ps->length.a = count - ps->debug - ps->colour;	
+	ps->length.a = count - (int)ps->debug - (int)ps->colour;	
 	return(ps);
 }
