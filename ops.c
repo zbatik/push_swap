@@ -1,62 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops1.c                                             :+:      :+:    :+:   */
+/*   ops.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zack <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 21:10:15 by zack              #+#    #+#             */
-/*   Updated: 2018/07/29 13:57:33 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/04 16:28:24 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	apply_op(t_ps *ps, t_op op)
-{
-	switch (op)
-	{
-		case sa :
-			swap(&ps->stack.a, ps->length.a);
-			break ;
-		case sb :
-			swap(&ps->stack.b, ps->length.b);
-			break ;
-		case ss :
-			swap(&ps->stack.a, ps->length.a);
-			swap(&ps->stack.b, ps->length.b);
-			break ;
-		case pa :
-			push(&ps->stack.b, &ps->stack.a, &ps->length.b, &ps->length.a);
-			break ;
-		case pb :
-			push(&ps->stack.a, &ps->stack.b, &ps->length.a, &ps->length.b);
-			break ;
-		case ra :
-			rotate(&ps->stack.a, ps->length.a);
-			break ;
-		case rb :
-			rotate(&ps->stack.b, ps->length.b);
-			break ;
-		case rr :
-			rotate(&ps->stack.a, ps->length.a);
-			rotate(&ps->stack.b, ps->length.b);
-			break ;
-		case rra :
-			rrotate(&ps->stack.a, ps->length.a);
-			break ;
-		case rrb :
-			rrotate(&ps->stack.b, ps->length.b);
-			break ;
-		case rrr :
-			rrotate(&ps->stack.a, ps->length.a);
-			rrotate(&ps->stack.b, ps->length.b);
-			break ;
-		case error :
-			ft_puterror("Invaild Operation");
-			exit(0);
-	}
-}
 
 void	swap(t_stack **stack, int len)
 {
@@ -105,9 +59,9 @@ void	rrotate(t_stack **stack, int len)
 
 void	rotate(t_stack **stack, int len)
 {
-	int i;
-	t_stack *bottom;
-	t_stack *top;
+	int		i;
+	t_stack	*bottom;
+	t_stack	*top;
 
 	if (len < 3)
 	{

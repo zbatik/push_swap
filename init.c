@@ -6,14 +6,13 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 15:03:39 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 14:03:01 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/04 16:42:31 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int check_input(char *input)
+int			check_input(char *input)
 {
 	return (ft_atoi(input));
 }
@@ -49,13 +48,13 @@ static int	check_flags(t_ps *ps, char *input)
 	return (0);
 }
 
-t_ps	*init_ps(int count, char **input)
+t_ps		*init_ps(int count, char **input)
 {
 	int		i;
 	t_ps	*ps;
 	t_stack	*item;
 	int		n;
-	
+
 	ps = setup_struct();
 	i = -1;
 	while (++i < count)
@@ -69,6 +68,6 @@ t_ps	*init_ps(int count, char **input)
 		item = ft_stnew(n);
 		ft_stpush(&ps->stack.a, item);
 	}
-	ps->length.a = count - (int)ps->debug - (int)ps->colour;	
-	return(ps);
+	ps->length.a = count - (int)ps->debug - (int)ps->colour;
+	return (ps);
 }

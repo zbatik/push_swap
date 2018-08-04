@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 14:05:07 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 15:38:56 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/04 16:45:11 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 t_dblist	*get_oplist(void)
 {
-	char		*op_str;
+	char		*opstr;
 	t_op		op;
 	t_dblist	*oplist;
 	int			ret;
 
+	opstr = NULL;
 	oplist = NULL;
 	while (1)
 	{
-		ret = get_next_line(0, &op_str);
-		if (ft_strequ(op_str, "done") || ret < 1)
+		ret = get_next_line(0, &opstr);
+		if (ft_strequ(opstr, "done") || ret < 1)
 			break ;
-		op = convert_op(op_str);
-		ft_lstdbadd(&oplist, ft_lstdbnew(op_str, op));
-		ft_strdel(&op_str);
+		op = convert_op(opstr);
+		ft_lstdbadd(&oplist, ft_lstdbnew(opstr, op));
+		ft_strdel(&opstr);
 	}
-	ft_strdel(&op_str);
-//	while (oplist)
-//		oplist = oplist->prev;
+	ft_strdel(&opstr);
 	return (oplist);
 }
 
-void	straight(t_ps *ps)
+void		straight(t_ps *ps)
 {
 	t_dblist *oplist;
 
@@ -49,23 +48,24 @@ void	straight(t_ps *ps)
 
 void	debug(t_ps *ps)
 {
-	char		*op_str;
+	char		*opstr;
 	t_op		op;
 	int			ret;
-
+	
+	opstr = NULL;	
+	ft_putendl_cl("Init", CL(m));
+	print_stacks(ps);
 	while (1)
 	{
-		ret = get_next_line(0, &op_str);
-		if (ft_strequ(op_str, "done") || ret < 1)
-			break;
-		op = convert_op(op_str);
+		ret = get_next_line(0, &opstr);
+		if (ft_strequ(opstr, "done") || ret < 1)
+			break ;
+		op = convert_op(opstr);
 		apply_op(ps, op);
 		ft_putchar('\t');
-		ft_putendl_cl(op_str, CL(r));
+		ft_putendl_cl(opstr, CL(r));
 		print_stacks(ps);
-		ft_strdel(&op_str);
+		ft_strdel(&opstr);
 	}
-	ft_strdel(&op_str);
-//	while (oplist)
-//		oplist = oplist->prev;
+	ft_strdel(&opstr);
 }

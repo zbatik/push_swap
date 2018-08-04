@@ -6,24 +6,11 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 15:39:02 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/04 15:50:53 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_stack *stack)
-{
-	int i;
-
-	i = -1;
-	while (stack)
-	{
-		ft_putnbr(stack->n);
-		ft_putchar('\n');
-		stack = stack->next;
-	}
-}
 
 static void	print_lables(t_ps *ps)
 {
@@ -37,7 +24,7 @@ static void	print_lables(t_ps *ps)
 	ft_putchar('\n');
 }
 
-void	print_stacks(t_ps *ps)
+void		print_stacks(t_ps *ps)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -54,7 +41,7 @@ void	print_stacks(t_ps *ps)
 		}
 		ft_putstr("\t\t");
 		if (b != NULL)
-		{	
+		{
 			ft_putnbr_cl(b->n, CL(c));
 			b = b->next;
 		}
@@ -62,10 +49,10 @@ void	print_stacks(t_ps *ps)
 	}
 }
 
-void	print_result(t_ps *ps)
+void		print_result(t_ps *ps)
 {
 	if (is_assending(ps) && ps->length.b == 0)
-		ft_putendl_cl("OK", CL(g));
+		ft_putendl_cl("OK", g);
 	else
-		ft_putendl_cl("KO", CL(r));
+		ft_putendl_cl("KO", r);
 }
