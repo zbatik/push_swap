@@ -6,31 +6,58 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:24:11 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 17:20:53 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/06 17:19:52 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h" 
 
+
 static void put_error(char *err)
 {
-	ft_puterr(err);
+	ft_puterror(err);
 	exit(-1);
 }	
 
-int			check_input(char *in)
+static int	ft_isint(char *in)
 {
-	
-	if (!ft_isnumber(in));
-		put_error("Error: input contains non-numbers")
-	if (!ft_isint(in));	
-		put_error("Error: input contains non-integers")
-	i = 1;
-	while (i < c)
+	char	*n;
+	int		cmp;
+
+	n = ft_itoa(ft_atoi(in));
+	cmp = ft_strequ(n, in);
+	ft_strdel(&n);
+	if (cmp)
+		return (1);	
+	else
+		return (0);
+}
+
+static int	check_dup(t_ps *ps, char *in)
+{
+	t_stack	*aa;
+	int		n;
+
+	n = ft_atoi(in);
+	aa = ps->stack.a;
+	while (aa)
 	{
-		ret = ft_isint(v[i]);
-		if (ret == 0)
-			return (0);
+		if (aa->n == n)
+			return (1);
+	aa = aa->next;
 	}
-	return (1);
+	return (0);
+}
+
+int			check_input(t_ps *ps, char *in)
+{
+	ps->file = 0;	
+
+	if (!ft_isnumber(in))
+		put_error("Error: input contains non-numbers");
+	if (!ft_isint(in))
+		put_error("Error: input contains non-integers");
+	if (check_dup(ps, in))
+		put_error("Error: input contains duplicates");
+	return (ft_atoi(in));
 }

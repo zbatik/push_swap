@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 15:38:36 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/06 18:00:51 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,15 @@ void			print_result(t_ps *ps);
 void			debug(t_ps *ps);
 void			straight(t_ps *ps);
 
-void			ft_stpush(t_stack **stack, t_stack *item);
+int				check_input(t_ps *ps, char *in);
 
+void			sort(t_ps *ps);
+void			ft_stackpush(t_stack **stack, t_stack *item);
+t_stack			*ft_stacknew(int n);
+void			ft_stackdel(t_stack **stack);
+int				ft_stackmin(t_stack *stack);
+
+void			clean(t_ps **ps);
 void			apply_op(t_ps *ps, t_op op);
 void			swap(t_stack **stack, int len);
 void			push(t_stack **from, t_stack **to, int *len_from, int *len_to);
@@ -86,6 +93,5 @@ void			rotate(t_stack **stack, int len);
 void			rrotate(t_stack **stack, int len);
 t_op			convert_op(char *op);
 int				is_assending(t_ps *ps);
-t_stack			*ft_stnew(int n);
 
 #endif

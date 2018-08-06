@@ -6,7 +6,7 @@
 /*   By: zack <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 21:10:15 by zack              #+#    #+#             */
-/*   Updated: 2018/08/04 16:28:24 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/06 12:14:45 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	push(t_stack **from, t_stack **to, int *len_from, int *len_to)
 		return ;
 	top = *from;
 	*from = top->next;
-	ft_stpush(to, top);
+	ft_stackpush(to, top);
 	*len_from -= 1;
 	*len_to += 1;
 }
@@ -53,7 +53,7 @@ void	rrotate(t_stack **stack, int len)
 	bottom = *stack;
 	while (++i < len - 2)
 		bottom = bottom->next;
-	ft_stpush(stack, bottom->next);
+	ft_stackpush(stack, bottom->next);
 	bottom->next = NULL;
 }
 

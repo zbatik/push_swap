@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 14:05:07 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 16:45:11 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/06 17:25:59 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ void		straight(t_ps *ps)
 	t_dblist *oplist;
 
 	oplist = get_oplist();
+	ft_lstdbtotop(&oplist);
 	while (oplist != NULL)
 	{
 		apply_op(ps, oplist->n);
-		oplist = oplist->prev;
+		oplist = oplist->next;
 	}
+	ft_lstdbtotop(&oplist);
+	ft_lstdbdel(&oplist);
 }
 
 void	debug(t_ps *ps)

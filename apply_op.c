@@ -6,13 +6,40 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:39:46 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 16:55:19 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/06 12:21:34 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	apply_op1(t_ps *ps, t_op op)
+t_op		convert_op(char *op)
+{
+	if (!ft_strcmp(op, "sa"))
+		return (sa);
+	else if (!ft_strcmp(op, "sb"))
+		return (sb);
+	else if (!ft_strcmp(op, "ss"))
+		return (ss);
+	else if (!ft_strcmp(op, "pa"))
+		return (pa);
+	else if (!ft_strcmp(op, "pb"))
+		return (pb);
+	else if (!ft_strcmp(op, "ra"))
+		return (ra);
+	else if (!ft_strcmp(op, "rb"))
+		return (rb);
+	else if (!ft_strcmp(op, "rr"))
+		return (rr);
+	else if (!ft_strcmp(op, "rra"))
+		return (rra);
+	else if (!ft_strcmp(op, "rrb"))
+		return (rrb);
+	else if (!ft_strcmp(op, "rrr"))
+		return (rrr);
+	return (error);
+}
+
+static void	apply_op1(t_ps *ps, t_op op)
 {
 	if (op == sa)
 		swap(&ps->stack.a, ps->length.a);
@@ -33,7 +60,7 @@ void	apply_op1(t_ps *ps, t_op op)
 		rotate(&ps->stack.b, ps->length.b);
 }
 
-void	apply_op2(t_ps *ps, t_op op)
+static void	apply_op2(t_ps *ps, t_op op)
 {
 	if (op == rr)
 	{
@@ -56,7 +83,7 @@ void	apply_op2(t_ps *ps, t_op op)
 	}
 }
 
-void	apply_op(t_ps *ps, t_op op)
+void		apply_op(t_ps *ps, t_op op)
 {
 	apply_op2(ps, op);
 	apply_op1(ps, op);

@@ -3,3 +3,4 @@
 .DS_Store
 push_swap
 checker
+*.dSYM

@@ -6,16 +6,11 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 15:03:39 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/04 16:42:31 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/06 16:37:31 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int			check_input(char *input)
-{
-	return (ft_atoi(input));
-}
 
 static t_ps	*setup_struct(void)
 {
@@ -48,6 +43,19 @@ static int	check_flags(t_ps *ps, char *input)
 	return (0);
 }
 
+static void	fmt_input(int *c, char ***input)
+{
+	char	**tmp;
+	int		i;
+
+	i = 0;
+	*input = ft_strsplit(**input, ' ');
+	tmp = *input;
+	while (tmp[i])
+		i++;
+	*c = i;
+}
+
 t_ps		*init_ps(int count, char **input)
 {
 	int		i;
@@ -56,17 +64,19 @@ t_ps		*init_ps(int count, char **input)
 	int		n;
 
 	ps = setup_struct();
-	i = -1;
-	while (++i < count)
+	if (count == 1)
+		fmt_input(&count, &input);
+	i = count;
+	while (--i >= 0)
 	{
 		if (i < 2)
 		{
 			if (check_flags(ps, input[i]))
 				continue ;
 		}
-		n = check_input(input[i]);
-		item = ft_stnew(n);
-		ft_stpush(&ps->stack.a, item);
+		n = check_input(ps, input[i]);
+		item = ft_stacknew(n);
+		ft_stackpush(&ps->stack.a, item);
 	}
 	ps->length.a = count - (int)ps->debug - (int)ps->colour;
 	return (ps);
