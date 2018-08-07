@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 13:57:45 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 15:53:36 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,30 @@ int	ft_stackfind(t_stack *stack, char *opt)
 		stack = stack->next;
 	}
 	return (ret);
+}
+
+int	ft_stackmed(t_stack *stack, int len)
+{
+	int count;
+	t_stack *top;
+	t_stack *roll;
+
+	top = stack;
+	count = 0;
+	while (stack)
+	{
+		roll = top;
+		while (roll)
+		{
+			if (stack->n == roll->n)
+				count++;
+			if (count == len / 2)
+				return (stack->n);
+			roll = roll->next;
+		}
+		stack = stack->next;
+	}
+	return (0);
 }
 
 int	ft_stackelmind(t_stack *stack, int n)

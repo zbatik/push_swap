@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 13:42:14 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 15:54:22 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_stack			*ft_stacknew(int n);
 void			ft_stackdel(t_stack **stack);
 int				ft_stackfind(t_stack *stack, char *opt);
 int				ft_stackelmind(t_stack *stack, int n);
+int				ft_stackmed(t_stack *stack, int len);
 
 void			clean(t_ps **ps);
 void			apply_op(t_ps *ps, t_op op);

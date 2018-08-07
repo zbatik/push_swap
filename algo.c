@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 17:43:25 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 14:21:39 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 16:22:12 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ static void	apply_step(t_ps *ps, char *op)
 		print_stacks(ps);
 }
 
-void		last_three(t_ps *ps, int len, int min, int max)
+void		last_three(t_ps *ps, int min, int max)
 {
-	len = 0;
 	if (is_assending(ps->stack.a, ps->length.a))
 		return ;
 	if (ps->stack.a->n == min)
@@ -34,12 +33,12 @@ void		last_three(t_ps *ps, int len, int min, int max)
 	else if (ps->stack.a->n == max)
 	{
 		apply_step(ps, "rr");
-		last_three(ps, len, min, max);
+		last_three(ps, min, max);
 	}
 	else
 	{
 		apply_step(ps, "sa");
-		last_three(ps, len, min, max);
+		last_three(ps, min, max);
 	}
 }
 
@@ -63,7 +62,24 @@ void		sort(t_ps *ps)
 		}
 		apply_step(ps, "pb");
 	}
-	last_three(ps, ps->length.a,  ps->min.a, ps->max.a);
+	last_three(ps, ps->min.a, ps->max.a);
 	while (ps->length.b != 0)
 		apply_step(ps, "pa");
 }
+/*
+void		split(t_ps *ps, t_stack *x, t_stack *y, int lenx, int leny)
+{
+	while (lenx > 3)
+	{
+		min = ft_stackfind(x, "min");
+		while (x->n != min)
+		{
+			if (ft_stackelmind(x, min) < lenx / 2)
+				apply_step(ps, "ra");
+			else
+				apply_step(ps, "rra");
+		}
+		apply_step(ps, "pb");
+	}
+
+}*/	
