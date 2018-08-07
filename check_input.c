@@ -39,7 +39,7 @@ static int	check_dup(t_ps *ps, char *in)
 	int		n;
 
 	n = ft_atoi(in);
-	aa = ps->stack.a;
+	aa = ps->a.stack;
 	while (aa)
 	{
 		if (aa->n == n)

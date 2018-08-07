@@ -6,17 +6,17 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:36:22 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 15:45:58 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 16:31:29 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 void	clean(t_ps **ps)
 {
-	ft_stackdel(&(*ps)->stack.a);
-	(*ps)->stack.a = NULL;
-	ft_stackdel(&(*ps)->stack.b);
-	(*ps)->stack.b = NULL;
+	ft_stackdel(&(*ps)->a.stack);
+	(*ps)->a.stack = NULL;
+	ft_stackdel(&(*ps)->b.stack);
+	(*ps)->b.stack = NULL;
 	free(*ps);
 	*ps = NULL;
 }

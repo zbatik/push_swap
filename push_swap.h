@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 15:54:22 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 16:37:09 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,21 @@ typedef struct	s_len
 	int b;
 }				t_len;
 
+typedef struct	s_group
+{
+	t_stack *stack;
+	int		min;
+	int		len;
+	int		max;
+}				t_group;
+
 typedef struct	s_ps
 {
-	t_len	max;
-	t_len	min;
+	t_group	a;
+	t_group b;
 	t_bool	debug;
 	t_bool	colour;
 	t_bool	file;
-	t_pair	stack;
-	t_len	length;
 }				t_ps;
 
 t_ps			*init_ps(int count, char **input);

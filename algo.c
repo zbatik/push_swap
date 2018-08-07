@@ -23,14 +23,14 @@ static void	apply_step(t_ps *ps, char *op)
 
 void		last_three(t_ps *ps, int min, int max)
 {
-	if (is_assending(ps->stack.a, ps->length.a))
+	if (is_assending(ps->a.stack, ps->a.len))
 		return ;
-	if (ps->stack.a->n == min)
+	if (ps->a.stack->n == min)
 	{
 		apply_step(ps, "rra");
 		apply_step(ps, "sa");
 	}
-	else if (ps->stack.a->n == max)
+	else if (ps->a.stack->n == max)
 	{
 		apply_step(ps, "rr");
 		last_three(ps, min, max);
@@ -47,23 +47,23 @@ void		sort(t_ps *ps)
 	int min;
 	int len;
 
-	if (is_assending(ps->stack.a, ps->length.a))
+	if (is_assending(ps->a.stack, ps->a.len))
 		return ;
-	while (ps->length.a > 3)
+	while (ps->a.len > 3)
 	{
-		min = ft_stackfind(ps->stack.a, "min");
-		while (ps->stack.a->n != min)
+		min = ft_stackfind(ps->a.stack, "min");
+		while (ps->a.stack->n != min)
 		{
-			len = ps->length.a / 2;
-			if (ft_stackelmind(ps->stack.a, min) < len)
+			len = ps->a.len / 2;
+			if (ft_stackelmind(ps->a.stack, min) < len)
 				apply_step(ps, "ra");
 			else
 				apply_step(ps, "rra");
 		}
 		apply_step(ps, "pb");
 	}
-	last_three(ps, ps->min.a, ps->max.a);
-	while (ps->length.b != 0)
+	last_three(ps, ps->a.min, ps->a.max);
+	while (ps->b.len != 0)
 		apply_step(ps, "pa");
 }
 /*

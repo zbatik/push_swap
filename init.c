@@ -17,16 +17,16 @@ static t_ps	*setup_struct(void)
 	t_ps *ps;
 
 	ps = (t_ps*)malloc(sizeof(t_ps));
-	ps->max.a = 0;
-	ps->max.b = 0;
-	ps->min.a = 0;
-	ps->min.b = 0;
+	ps->a.max = 0;
+	ps->b.max = 0;
+	ps->a.min = 0;
+	ps->b.min = 0;
 	ps->debug = 0;
 	ps->colour = 0;
-	ps->stack.a = NULL;
-	ps->stack.b = NULL;
-	ps->length.a = 0;
-	ps->length.b = 0;
+	ps->a.stack = NULL;
+	ps->b.stack = NULL;
+	ps->a.len = 0;
+	ps->b.len = 0;
 	return (ps);
 }
 
@@ -78,9 +78,9 @@ t_ps		*init_ps(int count, char **input)
 		}
 		n = check_input(ps, input[i]);
 		item = ft_stacknew(n);
-		ft_stackpush(&ps->stack.a, item);
+		ft_stackpush(&ps->a.stack, item);
 	}
-	ps->length.a = count - (int)ps->debug - (int)ps->colour;
+	ps->a.len = count - (int)ps->debug - (int)ps->colour;
 	set_extremes(ps);
 	return (ps);
 }

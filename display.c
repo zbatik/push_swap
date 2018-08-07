@@ -16,11 +16,11 @@ static void	print_lables(t_ps *ps)
 {
 	ft_putchar('A');
 	ft_putchar_cl(':', CL(g));
-	ft_putnbr_cl(ps->length.a, CL(g));
+	ft_putnbr_cl(ps->a.len, CL(g));
 	ft_putstr("\t\t");
 	ft_putchar('B');
 	ft_putchar_cl(':', CL(g));
-	ft_putnbr_cl(ps->length.b, CL(g));
+	ft_putnbr_cl(ps->b.len, CL(g));
 	ft_putchar('\n');
 }
 
@@ -29,8 +29,8 @@ void		print_stacks(t_ps *ps)
 	t_stack	*a;
 	t_stack	*b;
 
-	a = ps->stack.a;
-	b = ps->stack.b;
+	a = ps->a.stack;
+	b = ps->b.stack;
 	print_lables(ps);
 	while (a != NULL || b != NULL)
 	{
@@ -51,7 +51,7 @@ void		print_stacks(t_ps *ps)
 
 void		print_result(t_ps *ps)
 {
-	if (is_assending(ps->stack.a, ps->length.a) && ps->length.b == 0)
+	if (is_assending(ps->a.stack, ps->a.len) && ps->b.len == 0)
 		ft_putendl_cl("OK", g);
 	else
 		ft_putendl_cl("KO", r);
