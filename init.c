@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 15:03:39 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 16:37:31 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 11:18:38 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ static t_ps	*setup_struct(void)
 	t_ps *ps;
 
 	ps = (t_ps*)malloc(sizeof(t_ps));
-	ps->max = 0;
-	ps->min = 0;
+	ps->max.a = 0;
+	ps->max.b = 0;
+	ps->min.a = 0;
+	ps->min.b = 0;
 	ps->debug = 0;
 	ps->colour = 0;
 	ps->stack.a = NULL;
@@ -79,5 +81,6 @@ t_ps		*init_ps(int count, char **input)
 		ft_stackpush(&ps->stack.a, item);
 	}
 	ps->length.a = count - (int)ps->debug - (int)ps->colour;
+	set_extremes(ps);
 	return (ps);
 }

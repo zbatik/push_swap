@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 18:00:51 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 13:42:14 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct	s_len
 
 typedef struct	s_ps
 {
-	int		max;
-	int		min;
+	t_len	max;
+	t_len	min;
 	t_bool	debug;
 	t_bool	colour;
 	t_bool	file;
@@ -77,11 +77,13 @@ void			straight(t_ps *ps);
 
 int				check_input(t_ps *ps, char *in);
 
+void			set_extremes(t_ps *ps);
 void			sort(t_ps *ps);
 void			ft_stackpush(t_stack **stack, t_stack *item);
 t_stack			*ft_stacknew(int n);
 void			ft_stackdel(t_stack **stack);
-int				ft_stackmin(t_stack *stack);
+int				ft_stackfind(t_stack *stack, char *opt);
+int				ft_stackelmind(t_stack *stack, int n);
 
 void			clean(t_ps **ps);
 void			apply_op(t_ps *ps, t_op op);
@@ -92,6 +94,6 @@ t_dblist		*store_op(char *op_str, t_op op);
 void			rotate(t_stack **stack, int len);
 void			rrotate(t_stack **stack, int len);
 t_op			convert_op(char *op);
-int				is_assending(t_ps *ps);
+int				is_assending(t_stack *stack, int len);
 
 #endif

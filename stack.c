@@ -6,40 +6,58 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 17:43:11 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 13:57:45 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stackmin(t_stack *stack)
+int	ft_stackfind(t_stack *stack, char *opt)
 {
-	t_stack	*aa;
-	int		min;
+	int		ret;
 
-	
-	aa = stack;
-	min = aa->n;
-	while (aa)
+	if (!stack)
+		return (0);
+	ret = stack->n;
+	while (stack)
 	{
-		min = ft_min(min, aa->n);
-		aa = aa->next;
+		if (ft_strequ(opt, "min"))
+			ret = ft_min(ret, stack->n);
+		else if (ft_strequ(opt, "max"))
+			ret = ft_max(ret, stack->n);
+		stack = stack->next;
 	}
-	return (min);
+	return (ret);
 }
 
-int	is_assending(t_ps *ps)
+int	ft_stackelmind(t_stack *stack, int n)
 {
-	t_stack *aa;
+	int		ret;
+
+	ret = 0;
+	if (!stack)
+		return (-1);
+	while (stack)
+	{
+		if (stack->n == n)
+			return (ret);
+		ret++;
+		stack = stack->next;
+	}
+	return (-1);
+
+}
+
+int	is_assending(t_stack *stack, int len)
+{
 	int		i;
 
 	i = -1;
-	aa = ps->stack.a;
-	while (++i < ps->length.a - 1)
+	while (++i < len - 1)
 	{
-		if (aa->n > aa->next->n)
+		if (stack->n > stack->next->n)
 			return (0);
-		aa = aa->next;
+		stack = stack->next;
 	}
 	return (1);
 }

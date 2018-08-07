@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 10:31:58 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 10:45:42 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		print_stacks(t_ps *ps)
 
 void		print_result(t_ps *ps)
 {
-	if (is_assending(ps) && ps->length.b == 0)
+	if (is_assending(ps->stack.a, ps->length.a) && ps->length.b == 0)
 		ft_putendl_cl("OK", g);
 	else
 		ft_putendl_cl("KO", r);

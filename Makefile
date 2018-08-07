@@ -6,7 +6,7 @@
 #    By: zbatik <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/17 12:48:33 by zbatik            #+#    #+#              #
-#    Updated: 2018/08/06 17:50:13 by zbatik           ###   ########.fr        #
+#    Updated: 2018/08/07 10:44:06 by zbatik           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SHARED_FILES	= init.c display.c stack.c check_input.c apply_op.c ops.c \
 CHECK_FILES		= main_checker.c mode.c
 PS_FILES		= main_pushswap.c algo.c
 
-all: $(LIB) $(CHECKER) $(PS)
+all: clean $(LIB) $(CHECKER) $(PS)
 $(LIB):
 	make -s -C ./libft
 $(CHECKER) : $(LIB)

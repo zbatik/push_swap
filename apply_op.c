@@ -6,11 +6,19 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:39:46 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 12:21:34 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/07 11:18:48 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	set_extremes(t_ps *ps)
+{
+	ps->min.a = ft_stackfind(ps->stack.a, "min");
+	ps->min.b = ft_stackfind(ps->stack.b, "min");
+	ps->max.a = ft_stackfind(ps->stack.a, "max");
+	ps->max.b = ft_stackfind(ps->stack.b, "max");
+}
 
 t_op		convert_op(char *op)
 {
@@ -51,9 +59,15 @@ static void	apply_op1(t_ps *ps, t_op op)
 		swap(&ps->stack.b, ps->length.b);
 	}
 	else if (op == pa)
+	{
 		push(&ps->stack.b, &ps->stack.a, &ps->length.b, &ps->length.a);
+		set_extremes(ps);
+	}
 	else if (op == pb)
+	{
 		push(&ps->stack.a, &ps->stack.b, &ps->length.a, &ps->length.b);
+		set_extremes(ps);
+	}
 	else if (op == ra)
 		rotate(&ps->stack.a, ps->length.a);
 	else if (op == rb)
