@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 10:45:42 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/10 12:23:54 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,30 @@ void		print_result(t_ps *ps)
 		ft_putendl_cl("OK", g);
 	else
 		ft_putendl_cl("KO", r);
+}
+
+void		print_op(t_op op)
+{
+	if (op == sa)
+		ft_putendl("sa");
+	else if (op == sb)
+		ft_putendl("sb");
+	else if (op == ss)
+		ft_putendl("ss");
+	else if (op == pa)
+		ft_putendl("pa");
+	else if (op == pb)
+		ft_putendl("pb");
+	else if (op == ra)
+		ft_putendl("ra");
+	else if (op == rb)
+		ft_putendl("rb");
+	else if (op == rr)
+		ft_putendl("rr");
+	else if (op == rra)
+		ft_putendl("rra");
+	else if (op == rrb)
+		ft_putendl("rrb");
+	else if (op == rrr)
+		ft_putendl("rrr");
 }

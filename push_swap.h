@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 16:37:09 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/10 12:26:53 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include "libft/includes/libft.h"
 
 #define CL(x) (ps->colour ? x : na)
+#define ST_RROT(x) (x == 'a' ? rra : rrb)
+#define ST_ROT(x) (x == 'a' ? ra : rb)
+#define ST_PUSH(x) (x == 'a' ? pa : pb)
+#define ST_SWP(x) (x == 'a' ? sa : sb)
+#define	ST_OPP(x) (x == 'a' ? 'b' : 'a')
 
 typedef enum
 {
@@ -43,18 +48,6 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-typedef struct	s_pair
-{
-	t_stack	*a;
-	t_stack *b;
-}				t_pair;
-
-typedef struct	s_len
-{
-	int a;
-	int b;
-}				t_len;
-
 typedef struct	s_group
 {
 	t_stack *stack;
@@ -77,6 +70,7 @@ t_ps			*init_ps(int count, char **input);
 void			print_stack(t_stack *stack);
 void			print_stacks(t_ps *ps);
 void			print_result(t_ps *ps);
+void			print_op(t_op op);
 
 void			debug(t_ps *ps);
 void			straight(t_ps *ps);

@@ -6,14 +6,14 @@
 #    By: zbatik <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/17 12:48:33 by zbatik            #+#    #+#              #
-#    Updated: 2018/08/07 15:06:12 by zbatik           ###   ########.fr        #
+#    Updated: 2018/08/10 11:53:29 by zbatik           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PS				= push_swap
 CHECKER			= checker
 LIB				= libft/libft.a
-FLAGS			= -g -Wall -Werror -Wextra
+FLAGS			=  -Wall -Werror -Wextra
 SHARED_FILES	= init.c display.c stack.c check_input.c apply_op.c ops.c \
 				  misc.c
 CHECK_FILES		= main_checker.c mode.c

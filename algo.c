@@ -6,80 +6,67 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 17:43:25 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 16:22:12 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/10 13:44:32 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	apply_step(t_ps *ps, char *op)
+static void	apply_step(t_ps *ps, t_op op)
 {
 
-	apply_op(ps, convert_op(op));
-	ft_putendl(op);
+	apply_op(ps, op);
+	print_op(op);
 	if (ps->debug)
 		print_stacks(ps);
 }
 
-void		last_three(t_ps *ps, int min, int max)
+void		last_three(t_ps *ps, t_group *x, char ab)
 {
-	if (is_assending(ps->a.stack, ps->a.len))
+	if (is_assending(x->stack, x->len))
 		return ;
-	if (ps->a.stack->n == min)
+	if (x->stack->n == x->min)
 	{
-		apply_step(ps, "rra");
-		apply_step(ps, "sa");
+		apply_step(ps, ST_RROT(ab));
+		apply_step(ps, ST_SWP(ab));
 	}
-	else if (ps->a.stack->n == max)
+	else if (x->stack->n == x->max)
 	{
-		apply_step(ps, "rr");
-		last_three(ps, min, max);
+		apply_step(ps, ST_ROT(ab));
+		last_three(ps, x, ab);
 	}
 	else
 	{
-		apply_step(ps, "sa");
-		last_three(ps, min, max);
+		apply_step(ps, ST_SWP(ab));
+		last_three(ps, x, ab);
+	}
+}
+
+void		split(t_ps *ps, t_group *x, char ab)
+{
+	int min;
+
+	while (x->len > 3)
+	{
+		min = ft_stackfind(x->stack, "min");
+		while (x->stack->n != min)
+		{
+			if (ft_stackelmind(x->stack, min) < x->len / 2)
+				apply_step(ps, ST_ROT(ab));
+			else
+				apply_step(ps, ST_RROT(ab));
+		}
+		apply_step(ps, ST_PUSH(ST_OPP(ab)));
 	}
 }
 
 void		sort(t_ps *ps)
 {
-	int min;
-	int len;
-
 	if (is_assending(ps->a.stack, ps->a.len))
 		return ;
-	while (ps->a.len > 3)
-	{
-		min = ft_stackfind(ps->a.stack, "min");
-		while (ps->a.stack->n != min)
-		{
-			len = ps->a.len / 2;
-			if (ft_stackelmind(ps->a.stack, min) < len)
-				apply_step(ps, "ra");
-			else
-				apply_step(ps, "rra");
-		}
-		apply_step(ps, "pb");
-	}
-	last_three(ps, ps->a.min, ps->a.max);
+	split(ps, &ps->a, 'a');
+	last_three(ps, &ps->a, 'a');
 	while (ps->b.len != 0)
-		apply_step(ps, "pa");
+		apply_step(ps, ST_PUSH('a'));
 }
-/*
-void		split(t_ps *ps, t_stack *x, t_stack *y, int lenx, int leny)
-{
-	while (lenx > 3)
-	{
-		min = ft_stackfind(x, "min");
-		while (x->n != min)
-		{
-			if (ft_stackelmind(x, min) < lenx / 2)
-				apply_step(ps, "ra");
-			else
-				apply_step(ps, "rra");
-		}
-		apply_step(ps, "pb");
-	}
 
-}*/	
