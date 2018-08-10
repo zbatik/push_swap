@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 17:43:25 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/10 13:44:32 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/10 14:10:40 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		last_three(t_ps *ps, t_group *x, char ab)
 void		split(t_ps *ps, t_group *x, char ab)
 {
 	int min;
+	
 
 	while (x->len > 3)
 	{
@@ -60,13 +61,31 @@ void		split(t_ps *ps, t_group *x, char ab)
 	}
 }
 
+void		push_half(t_ps *ps, int len)
+{
+	int mid;
+	int i;
+
+	mid = ft_stackmed(ps->a.stack, len);
+	i = -1;
+	while (++i < len)
+	{
+		if (ps->a.stack->n >= mid)
+			apply_step(ps, ST_PUSH('b'));
+		else
+			apply_step(ps, ST_ROT('a'));
+	}
+	print_stacks(ps);
+}
+
 void		sort(t_ps *ps)
 {
 	if (is_assending(ps->a.stack, ps->a.len))
 		return ;
-	split(ps, &ps->a, 'a');
-	last_three(ps, &ps->a, 'a');
-	while (ps->b.len != 0)
-		apply_step(ps, ST_PUSH('a'));
+	push_half(ps, ps->a.len);
+	//split(ps, &ps->a, 'a');
+//	last_three(ps, &ps->a, 'a');
+//	while (ps->b.len != 0)
+//		apply_step(ps, ST_PUSH('a'));
 }
 

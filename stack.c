@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/10 11:55:41 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/10 14:32:57 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_stackmed(t_stack *stack, int len)
 		{
 			if (stack->n == roll->n)
 				count++;
-			if (count == len / 2)
+			if (count == 1 + len / 2)
 				return (stack->n);
 			roll = roll->next;
 		}
