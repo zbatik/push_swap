@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/10 12:26:53 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/12 16:51:09 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_ps			*init_ps(int count, char **input);
 void			print_stack(t_stack *stack);
 void			print_stacks(t_ps *ps);
 void			print_result(t_ps *ps);
-void			print_op(t_op op);
+void			print_op(t_ps *ps, t_op op);
 
 void			debug(t_ps *ps);
 void			straight(t_ps *ps);

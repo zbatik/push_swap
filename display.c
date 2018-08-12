@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/10 12:23:54 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/12 16:50:20 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,28 @@ void		print_result(t_ps *ps)
 		ft_putendl_cl("KO", r);
 }
 
-void		print_op(t_op op)
+void		print_op(t_ps *ps, t_op op)
 {
 	if (op == sa)
-		ft_putendl("sa");
+		ft_putendl_cl("sa", CL(r));
 	else if (op == sb)
-		ft_putendl("sb");
+		ft_putendl_cl("sb", CL(r));
 	else if (op == ss)
-		ft_putendl("ss");
+		ft_putendl_cl("ss", CL(r));
 	else if (op == pa)
-		ft_putendl("pa");
+		ft_putendl_cl("pa", CL(r));
 	else if (op == pb)
-		ft_putendl("pb");
+		ft_putendl_cl("pb", CL(r));
 	else if (op == ra)
-		ft_putendl("ra");
+		ft_putendl_cl("ra", CL(r));
 	else if (op == rb)
-		ft_putendl("rb");
+		ft_putendl_cl("rb", CL(r));
 	else if (op == rr)
-		ft_putendl("rr");
+		ft_putendl_cl("rr", CL(r));
 	else if (op == rra)
-		ft_putendl("rra");
+		ft_putendl_cl("rra", CL(r));
 	else if (op == rrb)
-		ft_putendl("rrb");
+		ft_putendl_cl("rrb", CL(r));
 	else if (op == rrr)
-		ft_putendl("rrr");
+		ft_putendl_cl("rrr", CL(r));
 }

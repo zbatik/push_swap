@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 14:05:07 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 17:25:59 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/12 14:29:04 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_dblist	*get_oplist(void)
 		if (ft_strequ(opstr, "done") || ret < 1)
 			break ;
 		op = convert_op(opstr);
+//		printf("op: %d, opstr: |%s|, true: %d\n", op, opstr, ft_strequ("ra", opstr));
 		ft_lstdbadd(&oplist, ft_lstdbnew(opstr, op));
 		ft_strdel(&opstr);
 	}
@@ -54,8 +55,8 @@ void	debug(t_ps *ps)
 	char		*opstr;
 	t_op		op;
 	int			ret;
-	
-	opstr = NULL;	
+
+	opstr = NULL;
 	ft_putendl_cl("Init", CL(m));
 	print_stacks(ps);
 	while (1)

@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 17:43:25 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/10 14:10:40 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/12 16:51:41 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	apply_step(t_ps *ps, t_op op)
 {
 
 	apply_op(ps, op);
-	print_op(op);
+	print_op(ps, op);
 	if (ps->debug)
 		print_stacks(ps);
 }
@@ -82,10 +82,10 @@ void		sort(t_ps *ps)
 {
 	if (is_assending(ps->a.stack, ps->a.len))
 		return ;
-	push_half(ps, ps->a.len);
-	//split(ps, &ps->a, 'a');
-//	last_three(ps, &ps->a, 'a');
-//	while (ps->b.len != 0)
-//		apply_step(ps, ST_PUSH('a'));
+//	push_half(ps, ps->a.len);
+	split(ps, &ps->a, 'a');
+	last_three(ps, &ps->a, 'a');
+	while (ps->b.len != 0)
+		apply_step(ps, ST_PUSH('a'));
 }
 

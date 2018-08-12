@@ -6,18 +6,17 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:24:11 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/06 17:19:52 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/12 14:27:52 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h" 
+#include "push_swap.h"
 
-
-static void put_error(char *err)
+static void	put_error(char *err)
 {
 	ft_puterror(err);
 	exit(-1);
-}	
+}
 
 static int	ft_isint(char *in)
 {
@@ -28,7 +27,7 @@ static int	ft_isint(char *in)
 	cmp = ft_strequ(n, in);
 	ft_strdel(&n);
 	if (cmp)
-		return (1);	
+		return (1);
 	else
 		return (0);
 }
@@ -51,7 +50,7 @@ static int	check_dup(t_ps *ps, char *in)
 
 int			check_input(t_ps *ps, char *in)
 {
-	ps->file = 0;	
+	ps->file = 0;
 
 	if (!ft_isnumber(in))
 		put_error("Error: input contains non-numbers");
