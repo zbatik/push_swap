@@ -6,7 +6,7 @@
 #    By: zbatik <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/17 12:48:33 by zbatik            #+#    #+#              #
-#    Updated: 2018/08/10 11:53:29 by zbatik           ###   ########.fr        #
+#    Updated: 2018/08/13 18:49:15 by zbatik           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FLAGS			=  -Wall -Werror -Wextra
 SHARED_FILES	= init.c display.c stack.c check_input.c apply_op.c ops.c \
 				  misc.c
 CHECK_FILES		= main_checker.c mode.c
-PS_FILES		= main_pushswap.c algo.c
+PS_FILES		= main_pushswap.c algo.c rank.c
 
 all: clean $(LIB) $(CHECKER) $(PS)
 $(LIB):

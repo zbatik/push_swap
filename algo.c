@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:13:27 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 15:46:32 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/13 18:54:21 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,86 +14,13 @@
 
 void	apply_step(t_ps *ps, t_op op)
 {
-
 	apply_op(ps, op);
 	print_op(ps, op);
 	if (ps->debug)
 		print_stacks(ps);
 }
 
-void	a_rank(t_stack *a, int len)
-{
-	int i;
-	int count;
-
-	i = 0;
-	count = 0;
-	while (a)
-	{
-		if (count++ <=	len / 2)
-		{
-			a->a_rank = i++;
-			a->a_dir = ra;
-		}
-		else
-		{
-			a->a_rank = len - i++;
-			a->a_dir = rra;
-		}
-		a = a->next;
-	}
-}
-
-int		b_rank_elm(t_stack *a, t_group *b)
-{
-	int count;
-	t_stack *stack;
-
-	stack = b->stack;
-	count = 0;
-	if (a->n > ft_stackfind(b->stack, "max"))
-	{
-		a->b_dir = rb;
-		return (ft_stackelmind(b->stack, ft_stackfind(b->stack, "max")));
-	}
-	while (stack->next)
-	{
-		count++;
-		if (a->n < stack->n && a->n > stack->next->n)
-		{
-			if (count > b->len / 2)
-			{
-				a->b_dir = rrb;
-				return (b->len - count);
-			}
-			else
-			{
-				a->b_dir = rb;
-				return (count);
-			}
-		}
-		stack = stack->next;
-	}
-	a->b_dir = rrb;
-	return (0);
-}
-
-void	b_rank(t_stack *a, t_group *b)
-{
-	while (a)
-	{
-		a->b_rank = b_rank_elm(a, b);
-		a = a->next;
-	}
-}
-
-void	rank(t_ps *ps)
-{
-	a_rank(ps->a.stack, ps->a.len);
-	b_rank(ps->a.stack, &ps->b);
-}
-
-t_stack	*best_ind(t_stack *a)
+		t_stack		*best_ind(t_stack *a)
 {
 	int score;
 	t_stack *top;
@@ -116,15 +43,30 @@ t_stack	*best_ind(t_stack *a)
 	return (a);
 }
 
-void	best(t_ps *ps)
+static void	best(t_ps *ps)
 {
 	t_stack	*node;
 
 	node = best_ind(ps->a.stack);
 	while (node->a_rank != 0)
 	{
-		apply_step(ps, node->a_dir);
-		node->a_rank -= 1;
+		if (node->a_dir == ra && node->b_dir == rb && node->b_rank != 0)
+		{
+			apply_step(ps, rr);
+			node->a_rank -= 1;
+			node->b_rank -= 1;
+		}
+		else if (node->a_dir == rra && node->b_dir == rrb && node->b_rank != 0)
+		{
+			apply_step(ps, rrr);
+			node->a_rank -= 1;
+			node->b_rank -= 1;
+		}
+		else
+		{
+			apply_step(ps, node->a_dir);
+			node->a_rank -= 1;
+		}
 	}
 	while(node->b_rank != 0)
 	{
@@ -134,7 +76,7 @@ void	best(t_ps *ps)
 	apply_step(ps, pb);
 }
 
-void	reset(t_ps *ps)
+static void	reset(t_ps *ps)
 {
 	int ind;
 	t_op op;
@@ -153,6 +95,8 @@ void	reset(t_ps *ps)
 
 void	sort(t_ps *ps)
 {
+	if (is_assending(ps->a.stack, ps->a.len))
+		return ;
 	apply_step(ps, pb);
 	apply_step(ps, pb);
 	while (ps->a.len != 0)

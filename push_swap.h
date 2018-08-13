@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 14:45:45 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/13 18:54:04 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void			apply_op(t_ps *ps, t_op op);
 void			swap(t_stack **stack, int len);
 void			push(t_stack **from, t_stack **to, int *len_from, int *len_to);
 
+void			rank(t_ps *ps);
 t_dblist		*store_op(char *op_str, t_op op);
 void			rotate(t_stack **stack, int len);
 void			rrotate(t_stack **stack, int len);

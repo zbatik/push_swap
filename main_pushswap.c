@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:33:39 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 11:39:51 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/13 15:56:12 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int	main(int c, char **v)
 		return (0);
 	ps = init_ps(c - 1, v + 1);
 	sort(ps);
-	print_stacks(ps);
 	clean(&ps);
 }
