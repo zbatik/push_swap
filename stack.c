@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/10 14:32:57 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/13 15:29:41 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ t_stack	*ft_stacknew(int n)
 
 	new = (t_stack*)malloc(sizeof(t_stack));
 	new->n = n;
+	new->a_rank = -1;
+	new->b_rank = -1;
+	new->a_dir = error;
+	new->b_dir = error;
 	new->next = NULL;
 	return (new);
 }

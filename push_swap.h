@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/12 16:51:09 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/13 14:45:45 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef enum
 typedef struct	s_stack
 {
 	int				n;
+	int				a_rank;
+	int				b_rank;
+	t_op			a_dir;
+	t_op			b_dir;
 	struct s_stack	*next;
 }				t_stack;
 
