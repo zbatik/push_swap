@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 14:05:07 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/15 14:03:47 by event            ###   ########.fr       */
+/*   Updated: 2018/08/15 14:58:39 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_dblist	*get_oplist(void)
 	t_dblist	*oplist;
 	int			ret;
 
+	opstr = NULL;
 	oplist = NULL;
 	while (1)
 	{
@@ -55,6 +56,7 @@ void			debug(t_ps *ps)
 	t_op		op;
 	int			ret;
 
+	opstr = NULL;
 	ft_putendl_cl("Init", CL(m));
 	print_stacks(ps);
 	while (1)
