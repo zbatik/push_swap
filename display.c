@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:29:12 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 18:20:24 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 12:59:44 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ void		print_stacks(t_ps *ps)
 		if (a != NULL)
 		{
 			ft_putnbr_cl(a->n, CL(y));
-			ft_putnbr_cl(a->a_rank, m);
-			ft_putnbr_cl(a->b_rank, y);
-		//	print_op(ps, a->a_dir);
-		//	print_op(ps, a->b_dir);
 			a = a->next;
 		}
 		ft_putstr("\t\t");

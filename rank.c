@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 18:46:46 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 18:49:36 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 14:31:22 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,20 @@ static void	a_rank(t_stack *a, int len)
 	}
 }
 
-static int	b_rank_elm(t_stack *a, t_group *b)
+static int	b_rank_check(t_stack *b, int b_len, t_stack *a)
 {
-	int		count;
-	t_stack	*stack;
+	int count;
 
-	stack = b->stack;
 	count = 0;
-	if (a->n > ft_stackfind(stack, "max"))
-	{
-		a->b_dir = rb;
-		return (ft_stackelmind(stack, ft_stackfind(stack, "max")));
-	}
-	if (a->n < ft_stackfind(stack, "min"))
-	{
-		a->b_dir = rb;
-		return (ft_stackelmind(stack, ft_stackfind(stack, "max")));
-	}
-	while (stack->next)
+	while (b->next)
 	{
 		count++;
-		if (a->n < stack->n && a->n > stack->next->n)
+		if (a->n < b->n && a->n > b->next->n)
 		{
-			if (count > b->len / 2)
+			if (count > b_len / 2)
 			{
 				a->b_dir = rrb;
-				return (b->len - count);
+				return (b_len - count);
 			}
 			else
 			{
@@ -68,10 +56,25 @@ static int	b_rank_elm(t_stack *a, t_group *b)
 				return (count);
 			}
 		}
-		stack = stack->next;
+		b = b->next;
 	}
 	a->b_dir = rb;
 	return (0);
+}
+
+static int	b_rank_elm(t_stack *a, t_group *b)
+{
+	if (a->n > ft_stackfind(b->stack, "max"))
+	{
+		a->b_dir = rb;
+		return (ft_stackelmind(b->stack, ft_stackfind(b->stack, "max")));
+	}
+	if (a->n < ft_stackfind(b->stack, "min"))
+	{
+		a->b_dir = rb;
+		return (ft_stackelmind(b->stack, ft_stackfind(b->stack, "max")));
+	}
+	return (b_rank_check(b->stack, b->len, a));
 }
 
 static void	b_rank(t_stack *a, t_group *b)

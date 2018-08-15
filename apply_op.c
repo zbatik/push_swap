@@ -6,13 +6,13 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:39:46 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/07 11:18:48 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 14:19:46 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_extremes(t_ps *ps)
+void		set_extremes(t_ps *ps)
 {
 	ps->a.min = ft_stackfind(ps->a.stack, "min");
 	ps->b.min = ft_stackfind(ps->b.stack, "min");

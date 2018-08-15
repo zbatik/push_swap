@@ -6,13 +6,13 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 19:01:19 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 15:29:41 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 14:01:15 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stackfind(t_stack *stack, char *opt)
+int		ft_stackfind(t_stack *stack, char *opt)
 {
 	int		ret;
 
@@ -30,31 +30,7 @@ int	ft_stackfind(t_stack *stack, char *opt)
 	return (ret);
 }
 
-int	ft_stackmed(t_stack *stack, int len)
-{
-	int count;
-	t_stack *top;
-	t_stack *roll;
-
-	top = stack;
-	count = 0;
-	while (stack)
-	{
-		roll = top;
-		while (roll)
-		{
-			if (stack->n == roll->n)
-				count++;
-			if (count == 1 + len / 2)
-				return (stack->n);
-			roll = roll->next;
-		}
-		stack = stack->next;
-	}
-	return (0);
-}
-
-int	ft_stackelmind(t_stack *stack, int n)
+int		ft_stackelmind(t_stack *stack, int n)
 {
 	int		ret;
 
@@ -69,21 +45,6 @@ int	ft_stackelmind(t_stack *stack, int n)
 		stack = stack->next;
 	}
 	return (-1);
-
-}
-
-int	is_assending(t_stack *stack, int len)
-{
-	int		i;
-
-	i = -1;
-	while (++i < len - 1)
-	{
-		if (stack->n > stack->next->n)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
 }
 
 t_stack	*ft_stacknew(int n)

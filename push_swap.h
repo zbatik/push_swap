@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 18:54:04 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 14:18:00 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@
 # include "libft/includes/libft.h"
 
 #define CL(x) (ps->colour ? x : na)
-#define ST_RROT(x) (x == 'a' ? rra : rrb)
-#define ST_ROT(x) (x == 'a' ? ra : rb)
-#define ST_PUSH(x) (x == 'a' ? pa : pb)
-#define ST_SWP(x) (x == 'a' ? sa : sb)
-#define	ST_OPP(x) (x == 'a' ? 'b' : 'a')
 
 typedef enum
 {
@@ -96,6 +91,8 @@ void			swap(t_stack **stack, int len);
 void			push(t_stack **from, t_stack **to, int *len_from, int *len_to);
 
 void			rank(t_ps *ps);
+void			best(t_ps *ps);
+void			apply_step(t_ps *ps, t_op op);
 t_dblist		*store_op(char *op_str, t_op op);
 void			rotate(t_stack **stack, int len);
 void			rrotate(t_stack **stack, int len);

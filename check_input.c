@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:24:11 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/12 14:27:52 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 14:01:41 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,13 @@ static int	check_dup(t_ps *ps, char *in)
 	{
 		if (aa->n == n)
 			return (1);
-	aa = aa->next;
+		aa = aa->next;
 	}
 	return (0);
 }
 
 int			check_input(t_ps *ps, char *in)
 {
-	ps->file = 0;
-
 	if (!ft_isnumber(in))
 		put_error("Error: input contains non-numbers");
 	if (!ft_isint(in))
@@ -59,4 +57,18 @@ int			check_input(t_ps *ps, char *in)
 	if (check_dup(ps, in))
 		put_error("Error: input contains duplicates");
 	return (ft_atoi(in));
+}
+
+int			is_assending(t_stack *stack, int len)
+{
+	int		i;
+
+	i = -1;
+	while (++i < len - 1)
+	{
+		if (stack->n > stack->next->n)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }

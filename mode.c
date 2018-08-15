@@ -6,13 +6,13 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 14:05:07 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/13 18:06:19 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 14:03:47 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dblist	*get_oplist(void)
+static t_dblist	*get_oplist(void)
 {
 	char		*opstr;
 	t_op		op;
@@ -34,7 +34,7 @@ t_dblist	*get_oplist(void)
 	return (oplist);
 }
 
-void		straight(t_ps *ps)
+void			straight(t_ps *ps)
 {
 	t_dblist *oplist;
 
@@ -49,7 +49,7 @@ void		straight(t_ps *ps)
 	ft_lstdbdel(&oplist);
 }
 
-void	debug(t_ps *ps)
+void			debug(t_ps *ps)
 {
 	char		*opstr;
 	t_op		op;

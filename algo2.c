@@ -6,46 +6,37 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 17:43:25 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/12 16:51:41 by zbatik           ###   ########.fr       */
+/*   Updated: 2018/08/15 14:04:52 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	apply_step(t_ps *ps, t_op op)
+void		last_three(t_ps *ps, t_group *a)
 {
-
-	apply_op(ps, op);
-	print_op(ps, op);
-	if (ps->debug)
-		print_stacks(ps);
-}
-
-void		last_three(t_ps *ps, t_group *x, char ab)
-{
-	if (is_assending(x->stack, x->len))
+	if (is_assending(a->stack, a->len))
 		return ;
-	if (x->stack->n == x->min)
+	if (a->stack->n == a->min)
 	{
-		apply_step(ps, ST_RROT(ab));
-		apply_step(ps, ST_SWP(ab));
+		apply_step(ps, rra);
+		apply_step(ps, sa);
 	}
-	else if (x->stack->n == x->max)
+	else if (a->stack->n == a->max)
 	{
-		apply_step(ps, ST_ROT(ab));
-		last_three(ps, x, ab);
+		apply_step(ps, ra);
+		last_three(ps, a);
 	}
 	else
 	{
-		apply_step(ps, ST_SWP(ab));
-		last_three(ps, x, ab);
+		apply_step(ps, sa);
+		last_three(ps, a);
 	}
 }
 
+/*
 void		split(t_ps *ps, t_group *x, char ab)
 {
 	int min;
-	
 
 	while (x->len > 3)
 	{
@@ -60,32 +51,4 @@ void		split(t_ps *ps, t_group *x, char ab)
 		apply_step(ps, ST_PUSH(ST_OPP(ab)));
 	}
 }
-
-void		push_half(t_ps *ps, int len)
-{
-	int mid;
-	int i;
-
-	mid = ft_stackmed(ps->a.stack, len);
-	i = -1;
-	while (++i < len)
-	{
-		if (ps->a.stack->n >= mid)
-			apply_step(ps, ST_PUSH('b'));
-		else
-			apply_step(ps, ST_ROT('a'));
-	}
-	print_stacks(ps);
-}
-
-void		sort(t_ps *ps)
-{
-	if (is_assending(ps->a.stack, ps->a.len))
-		return ;
-//	push_half(ps, ps->a.len);
-	split(ps, &ps->a, 'a');
-	last_three(ps, &ps->a, 'a');
-	while (ps->b.len != 0)
-		apply_step(ps, ST_PUSH('a'));
-}
-
+*/
