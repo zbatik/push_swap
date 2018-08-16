@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:22:55 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/15 14:18:00 by event            ###   ########.fr       */
+/*   Updated: 2018/08/16 12:23:54 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include "libft/includes/libft.h"
 
-#define CL(x) (ps->colour ? x : na)
+# define CL(x) (ps->colour ? x : na)
 
 typedef enum
 {

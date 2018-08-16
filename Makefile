@@ -6,7 +6,7 @@
 #    By: zbatik <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/17 12:48:33 by zbatik            #+#    #+#              #
-#    Updated: 2018/08/15 14:17:25 by event            ###   ########.fr        #
+#    Updated: 2018/08/16 12:24:20 by event            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,5 +31,5 @@ clean :
 fclean : clean
 	rm -f $(LIB)
 norm :
-	norminette $(SHARED_FILES) $(CHECK_FILES) $(PS_FILES)
+	norminette $(SHARED_FILES) $(CHECK_FILES) $(PS_FILES) *.h
 re : fclean all
