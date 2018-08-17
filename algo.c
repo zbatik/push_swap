@@ -6,19 +6,11 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:13:27 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/15 14:17:49 by event            ###   ########.fr       */
+/*   Updated: 2018/08/17 17:47:46 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void		apply_step(t_ps *ps, t_op op)
-{
-	apply_op(ps, op);
-	print_op(ps, op);
-	if (ps->debug)
-		print_stacks(ps);
-}
 
 static void	last_three(t_ps *ps, t_group *a)
 {
@@ -39,6 +31,33 @@ static void	last_three(t_ps *ps, t_group *a)
 		apply_step(ps, sa);
 		last_three(ps, a);
 	}
+}
+
+static void	push_min(t_ps *ps)
+{
+	t_op	op;
+	int		ind;
+
+	ind = ft_stackelmind(ps->a.stack, ft_stackfind(ps->a.stack, "min"));
+	if (ind > ps->a.len / 2)
+	{
+		ind = ps->a.len - ind;
+		op = rra;
+	}
+	else
+		op = rra;
+	while (ind-- != 0)
+		apply_step(ps, op);
+	apply_step(ps, pb);
+}
+
+static void	last_five(t_ps *ps)
+{
+	push_min(ps);
+	push_min(ps);
+	last_three(ps, &ps->a);
+	apply_step(ps, pa);
+	apply_step(ps, pa);
 }
 
 static void	reset(t_ps *ps)
@@ -65,6 +84,11 @@ void		sort(t_ps *ps)
 	if (ps->a.len == 3)
 	{
 		last_three(ps, &ps->a);
+		return ;
+	}
+	if (ps->a.len == 5)
+	{
+		last_five(ps);
 		return ;
 	}
 	apply_step(ps, pb);

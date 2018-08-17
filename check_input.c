@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:24:11 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/15 15:02:45 by event            ###   ########.fr       */
+/*   Updated: 2018/08/17 17:54:00 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	put_error(char *err)
 	ft_puterror(err);
 	exit(-1);
 }
-/*
+
 static int	ft_isint(char *in)
 {
 	char	*n;
@@ -25,13 +25,14 @@ static int	ft_isint(char *in)
 
 	n = ft_itoa(ft_atoi(in));
 	cmp = ft_strequ(n, in);
-	ft_strdel(&n);
+//	free(n);
+//	ft_strdel(&n);
 	if (cmp)
 		return (1);
 	else
 		return (0);
 }
-*/
+
 static int	check_dup(t_ps *ps, char *in)
 {
 	t_stack	*aa;
@@ -52,8 +53,8 @@ int			check_input(t_ps *ps, char *in)
 {
 	if (!ft_isnumber(in))
 		put_error("Error: input contains non-numbers");
-//	if (!ft_isint(in))
-//		put_error("Error: input contains non-integers");
+	if (!ft_isint(in))
+		put_error("Error: input contains non-integers");
 	if (check_dup(ps, in))
 		put_error("Error: input contains duplicates");
 	ps->debug = 0;

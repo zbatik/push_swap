@@ -6,12 +6,11 @@
 #    By: zbatik <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/04 17:10:12 by zbatik            #+#    #+#              #
-#    Updated: 2018/08/06 12:05:49 by zbatik           ###   ########.fr        #
+#    Updated: 2018/08/17 16:49:07 by event            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 BIN=../checker
-set -x
 echo Non Numeric Input
 $BIN 4 5 6 one
 $BIN 2 h 2
