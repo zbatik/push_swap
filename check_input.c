@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:24:11 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/17 17:54:00 by event            ###   ########.fr       */
+/*   Updated: 2018/08/19 13:05:41 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,28 @@ static void	put_error(char *err)
 
 static int	ft_isint(char *in)
 {
-	char	*n;
-	int		cmp;
+	int		len;
+	char	str_int[11];
+	int		sign;
+	int		i;
 
-	n = ft_itoa(ft_atoi(in));
-	cmp = ft_strequ(n, in);
-//	free(n);
-//	ft_strdel(&n);
-	if (cmp)
-		return (1);
-	else
+	sign = 0;
+	if (*in == '-')
+		sign = 1;
+	ft_strcpy(str_int, "2147483647");
+	str_int[9] += sign;
+	len = ft_strlen(in + sign);
+	if (len > 10)
 		return (0);
+	if (len < 10)
+		return (1);
+	i = sign - 1;
+	while (in[++i])
+	{
+		if (in[i] > str_int[i - sign])
+			return (0);
+	}
+	return (1);
 }
 
 static int	check_dup(t_ps *ps, char *in)

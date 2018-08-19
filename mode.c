@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 14:05:07 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/17 17:55:00 by event            ###   ########.fr       */
+/*   Updated: 2018/08/19 12:46:17 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static t_dblist	*get_oplist(void)
 		if (ft_strequ(opstr, "done") || ret < 1)
 			break ;
 		op = convert_op(opstr);
-//		printf("opstr: |%s|, op: %d, ret: %d\n", opstr, op, ret);
 		ft_lstdbadd(&oplist, ft_lstdbnew(opstr, op));
 		ft_strdel(&opstr);
 	}
@@ -65,7 +64,6 @@ void			debug(t_ps *ps)
 		if (ft_strequ(opstr, "done") || ret < 1)
 			break ;
 		op = convert_op(opstr);
-//		printf("opstr: |%s|, op: %d, ret: %d\n", opstr, op, ret);
 		apply_op(ps, op);
 		ft_putchar('\t');
 		ft_putendl_cl(opstr, CL(r));
