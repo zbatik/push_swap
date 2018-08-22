@@ -6,7 +6,7 @@
 /*   By: zbatik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 14:05:07 by zbatik            #+#    #+#             */
-/*   Updated: 2018/08/19 12:46:17 by event            ###   ########.fr       */
+/*   Updated: 2018/08/22 15:32:16 by zbatik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void			straight(t_ps *ps)
 	while (oplist != NULL)
 	{
 		apply_op(ps, oplist->n);
+		if (oplist->next == NULL)
+			break ;
 		oplist = oplist->next;
 	}
 	ft_lstdbtotop(&oplist);
